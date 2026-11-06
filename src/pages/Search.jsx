@@ -18,11 +18,14 @@ function Search() {
     <div>
         <h1>Search for Recipes</h1>
         <input placeholder="Search for recipes..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-       <p>Number of meals found: {meals.length}</p>
        {meals.map((meal) => (
-        <p key={meal.idMeal}> {meal.strMeal}</p> 
+       <div key={meal.idMeal}>
+        <img src={meal.strMealThumb} alt={meal.strMeal} />
+        <p>{meal.strMeal}</p> 
+        </div>
        ))}
        <button onClick={handleSearch}>Search</button>
+       
     </div>
     )
 }
