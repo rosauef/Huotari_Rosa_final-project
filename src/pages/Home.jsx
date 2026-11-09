@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Home() {
+    const navigate = useNavigate();
     const [randomRecipes, setRandomRecipes] = useState([]);
     useEffect(() => {
         async function fetchRandomRecipes() {
@@ -28,6 +30,7 @@ function Home() {
                 <div key={recipe.idMeal}>
                     <h3>{recipe.strMeal}</h3>
                     <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                    <button onClick={() => navigate('/recipe/'+recipe.idMeal)} >View Recipe</button>
                 </div>
             ))}
         </div>
