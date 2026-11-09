@@ -7,7 +7,7 @@ function Home() {
     useEffect(() => {
         async function fetchRandomRecipes() {
             const recipes = [];
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 9; i++) {
             try {
                 const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
                 const data = await response.json();
@@ -22,17 +22,24 @@ function Home() {
         fetchRandomRecipes();
     }, []);
     return (
-        <div>
+        <div className="container">
             <h1>Welcome to the RecipeFinder</h1>
             <p>Discover delicious recipes and save your favorites!</p>
             <h2>Explore random recipes</h2>
+            <div className="row">
             {randomRecipes.map((recipe) => (
-                <div key={recipe.idMeal}>
-                    <h3>{recipe.strMeal}</h3>
-                    <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-                    <button onClick={() => navigate('/recipe/'+recipe.idMeal)} >View Recipe</button>
+                <div className="col-md-4 mb-4" key={recipe.idMeal}>
+                <div className="card" >
+                    <img className="card-img-top" src={recipe.strMealThumb} alt={recipe.strMeal} />
+                    <div className="card-body">
+                    <h3 className="card-title">{recipe.strMeal}</h3>
+                    <button className="btn btn-primary" onClick={() => navigate('/recipe/'+recipe.idMeal)} >View Recipe</button>
+                    </div>
                 </div>
+                </div>
+                
             ))}
+            </div>
         </div>
     )
 }
