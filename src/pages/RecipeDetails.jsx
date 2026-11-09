@@ -18,11 +18,32 @@ function RecipeDetails() {
         }
             fetchMeal();
         }, [params.id]);
+
+    const ingredients = [];
+    if (meal != null) {
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal['strIngredient' + i]
+        if (ingredient) {
+            ingredients.push(ingredient);
+            }
+        }
+    }      
+
         
     return (
     <div>
         <h1>Recipe Details</h1>
-        <p>Recipe Name: {meal && meal.strMeal}</p>
+        <h2>{meal && meal.strMeal}</h2>
+        <img src={meal && meal.strMealThumb} alt={meal && meal.strMeal} />
+        <h2>Ingredients</h2>
+        <ul>
+            {ingredients.map((ingredient) => {
+                return <li key ={ingredient}>{ingredient}</li>;
+            })} 
+        </ul>
+        
+        <h2>Instructions</h2>
+        <p>{meal && meal.strInstructions}</p>
     </div>
     )
 }
