@@ -18,18 +18,24 @@ function Search() {
     
    
     return (
-    <div>
+    <div className="container">
         <h1>Search for Recipes</h1>
         <input placeholder="Search for recipes..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+       <button onClick={handleSearch}>Search</button>
+       <div className="row">
        {meals.map((meal) => (
-       <div key={meal.idMeal}>
-        <img src={meal.strMealThumb} alt={meal.strMeal} />
-        <p>{meal.strMeal}</p> 
-        <button onClick={() => navigate("/recipe/"+meal.idMeal)}>View Recipe</button>
+       <div className="col-md-4 mb-4" key={meal.idMeal}>
+        <div className="card"> 
+        <img className="card-img-top" src={meal.strMealThumb} alt={meal.strMeal} />
+        <div className="card-body">
+        <h3 className="card-title">{meal.strMeal}</h3>
+        <button className = "btn btn-primary" onClick={() => navigate("/recipe/"+meal.idMeal)}>View Recipe</button>
+        </div>
+        </div>
         </div>
        ))}
-       <button onClick={handleSearch}>Search</button>
        
+        </div>
     </div>
     )
 }

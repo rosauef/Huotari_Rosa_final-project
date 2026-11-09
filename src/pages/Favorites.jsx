@@ -9,15 +9,21 @@ function Favorites() {
     const navigate = useNavigate();
 
     return (
-    <div>
+    <div className="container">
         <h1>Favorites</h1>
+        <div className="row">
         {favorites.map((favorite) => (
-        <div key={favorite.idMeal}>
-            <p>{favorite.strMeal}</p>
-            <img src={favorite.strMealThumb} alt={favorite.strMeal} />
-            <button onClick={() => navigate('/recipe/'+favorite.idMeal)}>View Recipe</button>
+        <div key={favorite.idMeal} className="col-md-4 mb-4">
+            <div className="card">
+            <img className="card-img-top" src={favorite.strMealThumb} alt={favorite.strMeal} />
+            <div className="card-body">
+            <h3 className="card-title">{favorite.strMeal}</h3>
+            <button className = "btn btn-primary" onClick={() => navigate('/recipe/'+favorite.idMeal)}>View Recipe</button>
+        </div>
+        </div>
         </div>
         ))}
+    </div>
     </div>
     )   
 }
