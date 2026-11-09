@@ -29,11 +29,25 @@ function RecipeDetails() {
         }
     }      
 
-        
+    function handleAddToFavorites () {
+        const favoriteMeal = {
+            idMeal: meal.idMeal,
+            strMeal: meal.strMeal,
+            strMealThumb: meal.strMealThumb
+        }
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (!favorites.some(favorite => favorite.idMeal === meal.idMeal)) {
+           favorites.push(favoriteMeal);
+        }
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        console.log(favorites);
+    }
+
     return (
     <div>
         <h1>Recipe Details</h1>
         <h2>{meal && meal.strMeal}</h2>
+        <button onClick={handleAddToFavorites}>Add to Favorites</button>
         <img src={meal && meal.strMealThumb} alt={meal && meal.strMeal} />
         <h2>Ingredients</h2>
         <ul>
