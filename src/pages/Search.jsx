@@ -1,6 +1,8 @@
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Search() {
+    const navigate = useNavigate();
     async function handleSearch() {
         try {
             const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + searchTerm);
@@ -13,6 +15,7 @@ function Search() {
     }
     const [searchTerm, setSearchTerm] = useState('');
     const [meals, setMeals] = useState([]);
+    
    
     return (
     <div>
@@ -22,6 +25,7 @@ function Search() {
        <div key={meal.idMeal}>
         <img src={meal.strMealThumb} alt={meal.strMeal} />
         <p>{meal.strMeal}</p> 
+        <button onClick={() => navigate("/recipe/"+meal.idMeal)}>View Recipe</button>
         </div>
        ))}
        <button onClick={handleSearch}>Search</button>
