@@ -18,10 +18,10 @@ function Search() {
     
    
     return (
-    <div className="container">
-        <h1>Search for Recipes</h1>
-        <input placeholder="Search for recipes..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-       <button onClick={handleSearch}>Search</button>
+    <div>
+        <h1 className="mt-4 mb-4">Search for Recipes</h1>
+        <input className="mb-4"placeholder="Search for recipes..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+       <button className="btn btn-primary ms-2 mb-3" onClick={handleSearch}>Search</button>
        <div className="row">
        {meals.map((meal) => (
        <div className="col-md-4 mb-4" key={meal.idMeal}>

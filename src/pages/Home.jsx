@@ -23,9 +23,9 @@ function Home() {
     }, []);
     return (
         <div className="container">
-            <h1>Welcome to the RecipeFinder</h1>
+            <h1 className="mt-4 mb-4">Welcome</h1>
             <p>Discover delicious recipes and save your favorites!</p>
-            <h2>Explore random recipes</h2>
+            <h2 className="mb-4">Explore random recipes:</h2>
             <div className="row">
             {randomRecipes.map((recipe) => (
                 <div className="col-md-4 mb-4" key={recipe.idMeal}>

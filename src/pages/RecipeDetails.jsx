@@ -44,20 +44,28 @@ function RecipeDetails() {
     }
 
     return (
-    <div>
-        <h1>Recipe Details</h1>
-        <h2>{meal && meal.strMeal}</h2>
-        <button onClick={handleAddToFavorites}>Add to Favorites</button>
-        <img src={meal && meal.strMealThumb} alt={meal && meal.strMeal} />
-        <h2>Ingredients</h2>
+    <div className="container mt-4" style={{maxWidth: '900px'}}>
+        <h2 className="mb-3">{meal && meal.strMeal}</h2>
+        <div className="text-center mb-3">
+        <button className=" btn btn-success mb-3" onClick={handleAddToFavorites}>Add to Favorites</button>
+        </div>
+        <img className="img-fluid rounded mb-4" src={meal && meal.strMealThumb} alt={meal && meal.strMeal} />
+        <div className="card mb-4">
+            <div className="card-body text-start">
+                <h2>Ingredients</h2>
         <ul>
             {ingredients.map((ingredient) => {
                 return <li key ={ingredient}>{ingredient}</li>;
             })} 
         </ul>
-        
-        <h2>Instructions</h2>
-        <p>{meal && meal.strInstructions}</p>
+        </div>
+        </div>
+        <div className="card">
+            <div className="card-body text-start">
+                <h2>Instructions</h2>
+                <p style={{whiteSpace: 'pre-line'}}>{meal && meal.strInstructions}</p>
+            </div>
+        </div>
     </div>
     )
 }
